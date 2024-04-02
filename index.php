@@ -151,5 +151,7 @@
     </footer>
 
     <script src="https://kit.fontawesome.com/e555ee61bf.js" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
