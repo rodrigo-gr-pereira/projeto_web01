@@ -1,7 +1,6 @@
-<?php
-
+<?php 
+	include('config.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,138 +12,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="estilo/style.css">
-    <title>Projeto 01</title>
+<link href="<?php echo INCLUDE_PATH; ?>estilo/style.css" rel="stylesheet" />
+<title>Projeto 01</title>
 </head>
-<body>
-    
+<body> 
+    <!--pegr o local onde se encontra -->   
+    <?php
+        $url = isset($_GET['url']) ? $_GET['url'] : 'home';
+        switch ($url) {
+            case 'depoimentos';
+                echo '<target target="depoimentos" />';
+                break;
+              case 'servicos';  
+              echo '<target target="servicos" />';
+        }
+    ?>
+
     <header>
         <div class="center">
-        <div class="logo left">Logo</div><!--logo-->
+        <div class="logo left"><a href="#">Logomarca</a></div><!--logo-->
         <nav class="desktop right">
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Sobre</a></li>
-                <li><a href="">Serviços</a></li>
-                <li><a href="">Contato</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>depoimentos">Depoimentos</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
             </ul>
         </nav>
         <nav class="mobile right">
-            <div class="botao-menu-mobile">
+            <div  class="botao-menu-mobile">
             <i class="fa-solid fa-bars"></i>
             </div>
             <ul>    
-                <li><a href="">Home</a></li>
-                    <li><a href="">Sobre</a></li>
-                    <li><a href="">Serviços</a></li>
-                    <li><a href="">Contato</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>depoimentos">Depoimentos</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+                <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
         </nav>
         <div class="clear"></div>
         </div><!--center-->
     </header>
 
-    <section class="banner-principal">
-    <div class="overlay"></div><!--overlay-->
-        <div class="center">
-        <form>
-            <h2>Qual o seu melhor e-mail</h2>
-            <input type="email" name="email" required />
-            <input type="submit" name="acao" value="Cadastrar!">
-        </form>
-        </div><!--center-->
-    </section><!--banner-principal-->
+    <?php
+    
 
-    <section class="descricao-autor">
-        <div class="center">
-        <div class="w50 left">
-             <h2>Rodrigo Pereira</h2>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint dolorum nulla vitae 
-                esse modi ratione quidem omnis labore? Minima perspiciatis, quasi cumque velit ducimus unde
-                 incidunt maiores quisquam iste reiciendis?</p>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, explicabo. Neque et voluptatibus nesciunt
-                     fugit laboriosam, qui iure autem quod, blanditiis ullam nostrum optio dolores error quis perspiciatis quo officiis!</p>
-        </div><!--w50-->
-        <div class="w50 left">
-            <img class="right" src="img/foto.jpg">
-        </div><!--w50-->
-        <div class="clear"></div>
-        </div><!--center-->
-    </section><!--descricao-autor-->
+        if(file_exists('pages/'.$url.'.php')){
+            include('pages/'.$url.'.php');
+        }else{
+            //podemos fazer o que quiser, pois a pagina não existe.
+            if($url != 'depoimentos' && $url != 'servicos'){
+                $pagina404 = true;
+                include('pages/404.php');
+            }else{
+                include('pages/home.php');
+            }
+            
+        }
+    ?>
 
-    <section class="especialidades">
-            <div class="center">
-            <h2 class="title">Especialidades</h2>
-                <div class="w33 left box-especialidade">
-                    <h3><i class="fa-brands fa-css3"></i></h3>
-                    <h4>CSS3</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vero placeat recusandae numquam hic, at ipsam animi repellendus, saepe similique voluptatibus molestiae delectus 
-                        libero deserunt expedita quae impedit magni earum.</p>
-                </div><!--box-especialidade-->
-                
-                <div class="w33 left box-especialidade">
-                    <h3><i class="fa-brands fa-html5"></i></h3>
-                    <h4>HTML5</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vero placeat recusandae numquam hic, at ipsam animi repellendus, saepe similique voluptatibus molestiae delectus 
-                        libero deserunt expedita quae impedit magni earum.</p>
-                </div><!--box-especialidade-->
-                
-                <div class="w33 left box-especialidade">
-                    <h3><i class="fa-brands fa-js"></i></h3>
-                    <h4>JavaScript</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vero placeat recusandae numquam hic, at ipsam animi repellendus, saepe similique voluptatibus molestiae delectus 
-                        libero deserunt expedita quae impedit magni earum.</p>
-                </div><!--box-especialidade-->
-                <div class="clear"></div>
-                </div>
-    </section><!--especialidades-->
-
-    <section class="extras">
-
-        <div class="center">
-            <div class="w50 left depoimentos-container">
-                <h2 class="title">Depoimentos de nosssos clientes</h2>
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa dolor aperiam, est vero natus minus atque aliquid nulla aut expedita voluptatibus fugiat inventore 
-                        itaque ullam minima, voluptas non perferendis quam.</p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa dolor aperiam, est vero natus minus atque aliquid nulla aut expedita voluptatibus fugiat inventore 
-                        itaque ullam minima, voluptas non perferendis quam.</p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa dolor aperiam, est vero natus minus atque aliquid nulla aut expedita voluptatibus fugiat inventore 
-                        itaque ullam minima, voluptas non perferendis quam.</p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
-            </div><!--w50-->
-             
-            <div class="w50 left servicos-container">
-                <h2 class="title">Serviços</h2>
-                <div class="servicos">
-                    <ul>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, architecto debitis. Illum deleniti ipsam maxime ducimus labore delectus velit deserunt dignissimos dolore,
-                        omnis tempora, a tempore consequatur iste excepturi voluptatem.
-                        </li>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, architecto debitis. Illum deleniti ipsam maxime ducimus labore delectus velit deserunt dignissimos dolore,
-                             omnis tempora, a tempore consequatur iste excepturi voluptatem.
-                        </li>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, architecto debitis. Illum deleniti ipsam maxime ducimus labore delectus velit deserunt dignissimos dolore,
-                             omnis tempora, a tempore consequatur iste excepturi voluptatem.
-                        </li>
-                    </ul>
-                </div><!--servicos-->
-            </div><!--w50--> 
-            <div class="clear"></div>
-        </div><!--center-->
-    </section><!--extras-->
-
-    <footer>
+    <footer <?php if(isset($pagina404) && $pagina404 == true) echo 'class="fixed"'; ?>>
         <div class="center">
             <p>Todos os direitos reservados</p>
         </div><!--center-->
@@ -153,5 +80,11 @@
     <script src="https://kit.fontawesome.com/e555ee61bf.js" crossorigin="anonymous"></script>
     <script src="js/jquery.js"></script>
     <script src="js/scripts.js"></script>
+    <?php
+        if($url == 'contato'){
+    ?>
+     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD15698eK0FGbsHVnv6JYeJiKT_j21Vts8&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+    <?php } ?>
 </body>
 </html>

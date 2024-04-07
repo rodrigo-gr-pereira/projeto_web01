@@ -11,7 +11,6 @@ html,body{
 	height: 100%;
 }
 
-
 img{
 	width: 100%;
 	max-width: 400px;
@@ -137,6 +136,7 @@ section.banner-principal form input[type=email]{
 	color: #333;
 	font-size: 22px;
 	padding-left: 10px;
+	border: 0;
 }
 
 section.banner-principal form input[type=submit]{
@@ -270,58 +270,13 @@ footer p{
 	font-size: 16px;
 }
 
-
-/**
-
-
-
-
-
-.servicos-container,.depoimentos-container{
-	padding: 0 50px;
-}
-
-section.extras .title{
-	color: white;
-	font-weight: 300;
-	font-size: 25px;
-	margin-bottom: 15px;
-}
-
-.depoimento-single{
-	padding:15px 0;
-	border-bottom: 1px solid #5056A0;
-}
-
-p.depoimento-descricao{
-	font-size: 15px;
-	color: white;
-	font-weight: 300;
-}
-
-p.nome-autor{
-	font-size: 15px;
-	color: white;
-	margin-top:5px;
-	font-weight:bold;
-}
-
-.servicos ul{
-	margin:20px 0;
-	
-}
-
-.servicos li{
-	margin-bottom: 15px;
-	font-size: 15px;
-	color: white;
-	font-weight: 300;
-}
-
-
+/*
+ para arruamar scroll-x da IE e EDGE.
+*/
 body{
 	overflow-x: hidden;
 }
+
 section.erro-404 h2{
 	text-align: center;
 	color: #444;
@@ -396,6 +351,7 @@ section.erro-404 a{
 	cursor: pointer;
 }
 
+/**
 .bullets{
 	position: absolute;
 	bottom: 10px;
