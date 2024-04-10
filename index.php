@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-<link href="<?php echo INCLUDE_PATH; ?>estilo/style.css" rel="stylesheet" />
+<link href="estilo/style.css" rel="stylesheet" />
 <title>Projeto 01</title>
 </head>
 <body> 
@@ -80,6 +80,11 @@
     <script src="https://kit.fontawesome.com/e555ee61bf.js" crossorigin="anonymous"></script>
     <script src="js/jquery.js"></script>
     <script src="js/scripts.js"></script>
+    <?php
+        if($url == 'home' || $url =='' || $url == 'depoimentos' || $url =='servicos'){
+    ?>
+     <script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
+    <?php } ?>
     <?php
         if($url == 'contato'){
     ?>
